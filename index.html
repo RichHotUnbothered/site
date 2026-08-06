@@ -202,13 +202,27 @@
       transition: max-height 0.3s ease;
     }
 
-    .nav.is-open .nav-links { max-height: 260px; }
+    .nav.is-open .nav-links {
+      max-height: calc(100svh - var(--nav-h));
+      overflow-y: auto;
+    }
 
     .nav-links li + li { border-top: 1px solid var(--hairline); }
 
     .nav-links a {
       display: block;
       padding: 16px 24px;
+    }
+
+    .nav-join-item {
+      padding: 16px 24px;
+    }
+
+    .nav-join-item .nav-join {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 13px 18px;
     }
   }
 
@@ -732,8 +746,8 @@
       <li><a href="#blueprint">Rich B*tch Blueprint</a></li>
       <li><a href="#abundance">21 Days to Abundance</a></li>
       <li><a href="#rapid-money">The Rapid Money Method</a></li>
+      <li class="nav-join-item"><button class="nav-join" type="button" data-popup-open>Join the List</button></li>
     </ul>
-    <button class="nav-join" type="button" data-popup-open>Join the List</button>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -743,7 +757,7 @@
 (function () {
   var nav = document.querySelector('.nav');
   var toggle = document.querySelector('.nav-toggle');
-  var links = document.querySelectorAll('.nav-links a');
+  var links = document.querySelectorAll('.nav-links a, .nav-links .nav-join');
   if (!nav || !toggle) return;
   toggle.addEventListener('click', function () {
     var open = nav.classList.toggle('is-open');
