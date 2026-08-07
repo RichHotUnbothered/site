@@ -742,6 +742,63 @@
     color: var(--ivory-dim);
     margin: 0;
   }
+
+  /* ---------- Footer ---------- */
+
+  .site-footer {
+    background: var(--ink);
+    border-top: 1px solid var(--hairline);
+    padding: 56px clamp(20px, 4vw, 48px) 32px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+  }
+
+  .footer-col { min-width: 150px; }
+
+  .footer-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin: 0 0 14px;
+  }
+
+  .footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--ivory-dim);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copyright {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+    font-size: 12px;
+    color: var(--ivory-dim);
+    opacity: 0.7;
+    text-align: center;
+  }
 </style>
 
 <nav class="nav">
@@ -984,6 +1041,40 @@
     <a class="cta" href="#hero">Start here &rarr;</a>
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <a class="nav-mark" href="#hero">RICH HOT &amp; UNBOTHERED</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Site Map</p>
+      <ul class="footer-links">
+        <li><a href="#room">The Get Rich Room</a></li>
+        <li><a href="#quickie">The Get Rich Quickie</a></li>
+        <li><a href="#blueprint">Rich B*tch Blueprint</a></li>
+        <li><a href="#abundance">21 Days to Abundance</a></li>
+        <li><a href="#rapid-money">The Rapid Money Method</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Follow</p>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/iamsaralongoria/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/sara.longoria.79/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://substack.com/@saralongoria" target="_blank" rel="noopener">Substack</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Legal</p>
+      <ul class="footer-links">
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-copyright">&copy; 2026 Hey U Human, LLC. All rights reserved.</p>
+</footer>
 
 <script>
 (function () {
