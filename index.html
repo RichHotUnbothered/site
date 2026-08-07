@@ -134,6 +134,10 @@
 
   .nav-join:hover { background: #950303; transform: translateY(-1px); }
 
+  /* Desktop: no persistent "Join the List" button in the top bar — it only
+     appears inside the mobile dropdown (see the max-width:720px block). */
+  .nav-join-item { display: none; }
+
   .nav-links a {
     font-size: 12.5px;
     font-weight: 600;
@@ -215,6 +219,7 @@
     }
 
     .nav-join-item {
+      display: block;
       padding: 16px 24px;
     }
 
@@ -822,14 +827,18 @@
     <span class="script-line">Fuck it ladies.... let's get rich!</span>
     <p class="lede">You didn't come here to be reasonable.</p>
     <p class="copy">
-      This is the space for the woman who's done shrinking her money goals to fit
-      everyone else's comfort zone. Done waiting to &ldquo;feel ready.&rdquo; Done being
-      polite about how much she wants.
+      We don&rsquo;t give a fuck if your dream sounds unrealistic.<br />
+      We don&rsquo;t give a fuck if your mother thinks you should be happy with what you have.<br />
+      We don&rsquo;t give a fuck if your friends think that&rsquo;s a lot of money.<br />
+      We don&rsquo;t give a fuck if you&rsquo;ve already &ldquo;made it.&rdquo;
     </p>
-    <p class="statement">Rich, hot, and completely unbothered by what anyone thinks is doable.</p>
-    <p class="copy" style="font-style: italic; color: var(--gold-dim);">
-      The only &ldquo;bothered&rdquo; we're interested in is hot and bothered.
+    <p class="statement">
+      If you want more&hellip;<br />
+      You want more.<br />
+      That&rsquo;s the whole fucking reason.<br />
+      Now let&rsquo;s go get it.
     </p>
+    <p class="statement">Rich, hot, and unbothered by what &ldquo;good girls&rdquo; are supposed to want.</p>
     <a class="cta" href="#room">I'm in &rarr;</a>
   </div>
 </section>
