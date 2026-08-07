@@ -419,15 +419,18 @@
   .cta {
     display: inline-block;
     align-self: flex-start;
+    font-family: inherit;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
     padding: 14px 30px;
+    border: none;
     border-radius: 999px;
     background: var(--red);
     color: var(--ivory);
+    cursor: pointer;
     transition: transform 0.2s ease, background 0.2s ease;
   }
 
@@ -487,6 +490,8 @@
     align-items: center;
     text-align: center;
   }
+
+  .block--center .cta { align-self: center; }
 
   @media (max-width: 720px) {
     .block-content { max-width: 100%; }
@@ -970,7 +975,11 @@
   <div class="block-photo"></div>
   <div class="scrim scrim--dark"></div>
   <div class="block-content">
-    <p class="copy">You want more. So fcking what?</p>
+    <span class="sparkle-wrap">
+      <h2 class="headline foil">Rich. Hot. Unbothered.</h2>
+      <canvas class="sparkle-canvas" aria-hidden="true"></canvas>
+    </span>
+    <span class="script-line">You want more. So fcking what?</span>
     <p class="copy">More money when you already have enough.</p>
     <p class="copy">More success when you're already successful.</p>
     <p class="copy">More luxury. More freedom. More experiences. More everything.</p>
@@ -980,7 +989,7 @@
       And we're not interested in making your desires smaller so other people can feel
       better about theirs.
     </p>
-    <p class="copy">Rich. Hot. Unbothered.</p>
+    <button class="cta" type="button" data-popup-open>Join The List &rarr;</button>
   </div>
 </section>
 
