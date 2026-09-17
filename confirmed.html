@@ -74,52 +74,198 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding-top: var(--nav-h);
     background:
       linear-gradient(rgba(16, 9, 8, 0.74), rgba(16, 9, 8, 0.74)),
-      url('/assets/list-bg.jpg') center / cover no-repeat fixed;
+      url('/assets/rhu-background-image2.jpg') center / cover no-repeat fixed;
   }
 
   @media (max-width: 720px) {
-    body { background-attachment: scroll; }
+    body {
+      background-attachment: scroll;
+      background-image:
+        linear-gradient(rgba(16, 9, 8, 0.74), rgba(16, 9, 8, 0.74)),
+        url('/assets/rhu-background-image2-mobile.jpg');
+    }
   }
 
   a { color: var(--gold); }
 
-  .bar {
-    position: sticky;
+  /* ---------- Nav (matches the homepage nav; links point back at its sections) ---------- */
+
+  .nav {
+    position: fixed;
     top: 0;
-    z-index: 10;
+    left: 0;
+    right: 0;
     height: var(--nav-h);
+    z-index: 10;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 clamp(20px, 4vw, 48px);
-    background: rgba(16, 9, 8, 0.9);
+    background: rgba(16, 9, 8, 0.72);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--hairline);
   }
 
-  .bar a {
+  .nav-mark {
     font-family: var(--font-serif);
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.18em;
     color: var(--gold);
     text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2.4vw, 24px);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(16px, 3vw, 32px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-join {
+    font-family: var(--font-ui);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 999px;
+    background: var(--red);
+    color: var(--ivory);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .nav-join:hover { background: #950303; transform: translateY(-1px); }
+
+  .nav-join-item { display: none; }
+
+  .nav-links a {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ivory-dim);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-toggle {
+    display: none;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ivory);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .nav.is-open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 720px) {
+    .nav-mark {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 56vw;
+    }
+
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      background: rgba(16, 9, 8, 0.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hairline);
+      transition: max-height 0.3s ease;
+    }
+
+    .nav.is-open .nav-links {
+      max-height: calc(100svh - var(--nav-h));
+      overflow-y: auto;
+    }
+
+    .nav-links li + li { border-top: 1px solid var(--hairline); }
+
+    .nav-links a {
+      display: block;
+      padding: 16px 24px;
+    }
+
+    .nav-join-item {
+      display: block;
+      padding: 16px 24px;
+    }
+
+    .nav-join-item .nav-join {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 13px 18px;
+    }
   }
 
   main {
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     padding: 48px clamp(20px, 5vw, 48px);
+  }
+
+  @media (max-width: 720px) {
+    main { justify-content: center; }
   }
 
   .card {
     width: 100%;
     max-width: 560px;
-    background: var(--surface);
+    background: #0000007d;
     border: 1px solid var(--hairline);
     border-radius: 22px;
     padding: clamp(36px, 6vw, 56px) clamp(24px, 5vw, 48px);
@@ -183,10 +329,10 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink);
-    background: var(--gold);
+    background: #b70404;
     padding: 9px 20px;
     border-radius: 999px;
-    margin: 0 0 30px;
+    margin: 15px 0 30px;
   }
 
   p {
@@ -223,9 +369,40 @@
   footer a { color: var(--ivory-dim); }
 </style>
 
-<div class="bar">
-  <a href="/">RICH HOT &amp; UNBOTHERED</a>
-</div>
+<nav class="nav">
+  <a class="nav-mark" href="/#hero">RICH HOT &amp; UNBOTHERED</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/#room">The Get Rich Room</a></li>
+      <li><a href="/#quickie">The Get Rich Quickie</a></li>
+      <li><a href="/#blueprint">Rich B*tch Blueprint</a></li>
+      <li><a href="/#abundance">21 Days to Abundance</a></li>
+      <li><a href="/#rapid-money">The Rapid Money Method</a></li>
+      <li class="nav-join-item"><a class="nav-join" href="/#list">Join the List</a></li>
+    </ul>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+(function () {
+  var nav = document.querySelector('.nav');
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelectorAll('.nav-links a, .nav-links .nav-join');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.forEach(function (a) {
+    a.addEventListener('click', function () {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
 
 <main>
   <div class="card">
