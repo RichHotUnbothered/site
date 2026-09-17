@@ -75,8 +75,12 @@
     flex-direction: column;
     min-height: 100vh;
     background:
-      radial-gradient(60% 50% at 50% 0%, rgba(220, 184, 122, 0.16) 0%, rgba(220, 184, 122, 0) 70%),
-      var(--ink);
+      linear-gradient(rgba(16, 9, 8, 0.74), rgba(16, 9, 8, 0.74)),
+      url('/assets/list-bg.jpg') center / cover no-repeat fixed;
+  }
+
+  @media (max-width: 720px) {
+    body { background-attachment: scroll; }
   }
 
   a { color: var(--gold); }
@@ -123,21 +127,12 @@
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
   }
 
-  .kicker {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold-dim);
-    margin: 0 0 18px;
-  }
-
   h1 {
     font-family: var(--font-serif);
     font-weight: 700;
     font-size: clamp(38px, 7vw, 58px);
     line-height: 1.05;
-    margin: 0;
+    margin: 0 0 22px;
   }
 
   .foil {
@@ -234,16 +229,20 @@
 
 <main>
   <div class="card">
-    <p class="kicker">Almost There</p>
-    <h1 class="foil">You&rsquo;re In!</h1>
-    <span class="script-line">&hellip;wait.</span>
+    <p class="script-line">Almost Done</p>
+    <h1 class="foil">The Rich List</h1>
     <span class="warning">You&rsquo;re Not Confirmed Yet</span>
-    <p class="lede">Please check your email ASAP to confirm your spot!</p>
+    <p class="lede">Please check your email right now!</p>
     <p>
-      We just sent a confirmation email your way &mdash; open it up and click confirm,
-      or you won&rsquo;t hear from us again.
+      We just sent a confirmation email your way. Open it up and click confirm so the
+      tech gods know you want to hear from us.
     </p>
     <p class="fine">Don&rsquo;t see it? Check your spam or promotions folder.</p>
+    <span class="script-line" style="
+    margin: 25px 0;
+    color:  white;
+    font-weight: 200!important;
+">Fck it ladies.... let's get rich!</span>
   </div>
 </main>
 
