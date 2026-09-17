@@ -6,6 +6,12 @@
   <meta name="robots" content="noindex" />
   <title>You&rsquo;re In — Rich, Hot &amp; Unbothered</title>
 
+  <link rel="stylesheet" href="/assets/fonts.css" />
+  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+
   <!-- ActiveCampaign Site Tracking -->
   <script>
     (function(e,t,o,n,p,r,i){e.visitorGlobalObjectAlias=n;e[e.visitorGlobalObjectAlias]=e[e.visitorGlobalObjectAlias]||function(){(e[e.visitorGlobalObjectAlias].q=e[e.visitorGlobalObjectAlias].q||[]).push(arguments)};e[e.visitorGlobalObjectAlias].l=(new Date).getTime();r=t.createElement("script");r.src=o;r.async=true;i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)})(window,document,"https://diffuser-cdn.app-us1.com/diffuser/diffuser.js","vgo");
@@ -59,11 +65,18 @@
     margin: 0;
     background: var(--ink);
     color: var(--ivory);
+    min-height: 100%;
   }
 
   body {
     font-family: var(--font-ui);
     -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(220, 184, 122, 0.16) 0%, rgba(220, 184, 122, 0) 70%),
+      var(--ink);
   }
 
   a { color: var(--gold); }
@@ -92,59 +105,115 @@
   }
 
   main {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 96px clamp(20px, 4vw, 48px) 120px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px clamp(20px, 5vw, 48px);
+  }
+
+  .card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 22px;
+    padding: clamp(36px, 6vw, 56px) clamp(24px, 5vw, 48px);
     text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
   }
 
   .kicker {
-    font-size: 12.5px;
-    letter-spacing: 0.18em;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--gold-dim);
-    margin: 0 0 20px;
+    margin: 0 0 18px;
   }
 
   h1 {
     font-family: var(--font-serif);
     font-weight: 700;
-    font-size: clamp(32px, 6vw, 52px);
-    line-height: 1.12;
-    margin: 0 0 24px;
+    font-size: clamp(38px, 7vw, 58px);
+    line-height: 1.05;
+    margin: 0;
   }
 
-  h1 .gold { color: var(--gold); }
+  .foil {
+    background-image: linear-gradient(
+      115deg,
+      #6e4f26 0%,
+      #caa063 13%,
+      #f8ecc9 24%,
+      #dcb87a 34%,
+      #8a6a3a 45%,
+      #f8ecc9 58%,
+      #caa063 70%,
+      #dcb87a 82%,
+      #f8ecc9 100%
+    );
+    background-size: 280% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+    animation: foilShine 7s ease-in-out infinite;
+  }
+
+  @keyframes foilShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .foil { animation: none; background-position: 35% 50%; }
+  }
+
+  .script-line {
+    font-family: 'Kingsley Roman', cursive;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1;
+    margin: 6px 0 26px;
+    display: block;
+  }
 
   .warning {
     display: inline-block;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink);
     background: var(--gold);
-    padding: 8px 18px;
+    padding: 9px 20px;
     border-radius: 999px;
-    margin: 0 0 28px;
+    margin: 0 0 30px;
   }
 
   p {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.7;
     color: var(--ivory-dim);
     margin: 0 0 16px;
   }
 
   p.lede {
-    font-size: 20px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(19px, 2.6vw, 23px);
     color: var(--ivory);
+    margin: 0 0 20px;
   }
 
   .fine {
-    font-size: 13.5px;
+    font-size: 13px;
     color: var(--gold-dim);
-    margin-top: 32px;
+    margin: 28px 0 0;
   }
 
   footer {
@@ -164,15 +233,18 @@
 </div>
 
 <main>
-  <p class="kicker">Almost there</p>
-  <h1>You&rsquo;re In! <span class="gold">&hellip;Wait.</span></h1>
-  <span class="warning">You&rsquo;re Not Confirmed Yet</span>
-  <p class="lede">Please check your email ASAP to confirm your spot!</p>
-  <p>
-    We just sent a confirmation email your way &mdash; open it up and click confirm, or
-    you won&rsquo;t hear from us again.
-  </p>
-  <p class="fine">Don&rsquo;t see it? Check your spam or promotions folder.</p>
+  <div class="card">
+    <p class="kicker">Almost There</p>
+    <h1 class="foil">You&rsquo;re In!</h1>
+    <span class="script-line">&hellip;wait.</span>
+    <span class="warning">You&rsquo;re Not Confirmed Yet</span>
+    <p class="lede">Please check your email ASAP to confirm your spot!</p>
+    <p>
+      We just sent a confirmation email your way &mdash; open it up and click confirm,
+      or you won&rsquo;t hear from us again.
+    </p>
+    <p class="fine">Don&rsquo;t see it? Check your spam or promotions folder.</p>
+  </div>
 </main>
 
 <footer>
