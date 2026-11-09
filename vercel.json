@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/confirmed", "destination": "/confirmed.html" }
+    { "source": "/confirmed", "destination": "/confirmed.html" },
+    { "source": "/test", "destination": "/test.html" }
   ]
 }
