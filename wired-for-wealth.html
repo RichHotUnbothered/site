@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wired for Wealth — Rich, Hot &amp; Unbothered</title>
+  <meta name="description" content="Recode your mind, body &amp; energy for wealth in less than 20 minutes a day." />
+
+  <link rel="stylesheet" href="/assets/fonts.css" />
+  <link rel="stylesheet" href="/assets/cart.css?v=1" />
+  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+
+  <!-- ActiveCampaign Site Tracking -->
+  <script>
+    (function(e,t,o,n,p,r,i){e.visitorGlobalObjectAlias=n;e[e.visitorGlobalObjectAlias]=e[e.visitorGlobalObjectAlias]||function(){(e[e.visitorGlobalObjectAlias].q=e[e.visitorGlobalObjectAlias].q||[]).push(arguments)};e[e.visitorGlobalObjectAlias].l=(new Date).getTime();r=t.createElement("script");r.src=o;r.async=true;i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)})(window,document,"https://diffuser-cdn.app-us1.com/diffuser/diffuser.js","vgo");
+    vgo('setAccount', '800718211');
+    vgo('setTrackByDefault', true);
+
+    vgo('process');
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '875667178703497');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=875667178703497&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+<style>
+  :root {
+    --ink: #100908;
+    --surface: #1e1613;
+    --ivory: #f1eae0;
+    --ivory-dim: #cabfb0;
+    --gold: #dcb87a;
+    --gold-dim: #a98c5c;
+    --red: #b70404;
+    --hairline: rgba(220, 184, 122, 0.22);
+    --nav-h: 72px;
+    --font-serif: 'Bodoni Moda', 'Times New Roman', serif;
+    --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--ivory);
+    min-height: 100%;
+  }
+
+  body {
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: var(--nav-h);
+    background:
+      linear-gradient(rgba(16, 9, 8, 0.74), rgba(16, 9, 8, 0.74)),
+      url('/assets/rhu-background-image2.jpg') center / cover no-repeat fixed;
+  }
+
+  @media (max-width: 720px) {
+    body {
+      background-attachment: scroll;
+      background-image:
+        linear-gradient(rgba(16, 9, 8, 0.74), rgba(16, 9, 8, 0.74)),
+        url('/assets/rhu-background-image2-mobile.jpg');
+    }
+  }
+
+  a { color: var(--gold); }
+
+  /* ---------- Nav (matches the homepage nav; links point back at its sections) ---------- */
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-h);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(20px, 4vw, 48px);
+    background: rgba(16, 9, 8, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .nav-mark {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2.4vw, 24px);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(16px, 3vw, 32px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-join {
+    font-family: var(--font-ui);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 999px;
+    background: var(--red);
+    color: var(--ivory);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .nav-join:hover { background: #950303; transform: translateY(-1px); }
+
+  .nav-join-item { display: none; }
+
+  .nav-links a {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ivory-dim);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-toggle {
+    display: none;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ivory);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .nav.is-open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 720px) {
+    .nav-mark {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 56vw;
+    }
+
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      background: rgba(16, 9, 8, 0.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hairline);
+      transition: max-height 0.3s ease;
+    }
+
+    .nav.is-open .nav-links {
+      max-height: calc(100svh - var(--nav-h));
+      overflow-y: auto;
+    }
+
+    .nav-links li + li { border-top: 1px solid var(--hairline); }
+
+    .nav-links a {
+      display: block;
+      padding: 16px 24px;
+    }
+
+    .nav-join-item {
+      display: block;
+      padding: 16px 24px;
+    }
+
+    .nav-join-item .nav-join {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 13px 18px;
+    }
+  }
+
+
+
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 56px) clamp(16px, 4vw, 48px) clamp(56px, 8vw, 96px);
+  }
+
+  .crumbs {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin: 0 0 clamp(24px, 4vw, 40px);
+  }
+  .crumbs a { color: var(--gold-dim); text-decoration: none; }
+  .crumbs a:hover { color: var(--gold); }
+  .crumbs span { color: var(--ivory-dim); }
+
+  .product {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+  }
+
+  @media (max-width: 860px) { .product { grid-template-columns: 1fr; } }
+
+  .product-image {
+    position: sticky;
+    top: calc(var(--nav-h) + 24px);
+    margin: 0;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    aspect-ratio: 1 / 1;
+    background: var(--surface);
+  }
+  .product-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  @media (max-width: 860px) { .product-image { position: static; } }
+
+  .info {
+    background: #0000007d;
+    border: 1px solid var(--hairline);
+    border-radius: 22px;
+    padding: clamp(28px, 4vw, 44px) clamp(22px, 4vw, 44px);
+  }
+
+  .kicker {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin: 0 0 14px;
+  }
+
+  .script-line {
+    font-family: 'Kingsley Roman', cursive;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1;
+    display: block;
+    margin: 0 0 4px;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 60px);
+    line-height: 1.02;
+    margin: 0 0 20px;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin: 0 0 22px;
+  }
+  .price-now { font-family: var(--font-serif); font-weight: 700; font-size: 34px; color: var(--gold); }
+  .price-was { font-size: 18px; color: var(--ivory-dim); opacity: 0.6; text-decoration: line-through; }
+  .price-tag {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ivory); background: var(--red); padding: 6px 12px; border-radius: 999px;
+  }
+
+  p { font-size: 16px; line-height: 1.7; color: var(--ivory-dim); margin: 0 0 16px; }
+
+  p.lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(19px, 2.4vw, 22px);
+    line-height: 1.45;
+    color: var(--ivory);
+  }
+
+  .cta {
+    display: block;
+    text-align: center;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 17px 30px;
+    border-radius: 999px;
+    background: var(--red);
+    color: var(--ivory);
+    margin: 26px 0 12px;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .cta:hover { transform: translateY(-2px); background: #950303; }
+
+  .cta-note { font-size: 12.5px; text-align: center; color: var(--gold-dim); margin: 0; }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ivory);
+    margin: 36px 0 16px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .phases { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .phases li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 16px;
+    padding: 16px 18px;
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    background: rgba(16, 9, 8, 0.5);
+  }
+  .phase-num {
+    grid-row: span 2;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .phase-name { font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ivory); }
+  .phase-desc { font-size: 15px; line-height: 1.55; color: var(--ivory-dim); }
+
+  .outcomes { margin: 0; padding: 0; list-style: none; }
+  .outcomes li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ivory-dim);
+    margin: 0 0 10px;
+  }
+  .outcomes li::before { content: "✦"; position: absolute; left: 0; color: var(--gold); font-size: 13px; top: 2px; }
+
+  .back {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .back:hover { color: var(--ivory); }
+
+  @media (prefers-reduced-motion: reduce) { .cta { transition: none; } .cta:hover { transform: none; } }
+
+  .foil {
+    background-image: linear-gradient(
+      115deg,
+      #6e4f26 0%,
+      #caa063 13%,
+      #f8ecc9 24%,
+      #dcb87a 34%,
+      #8a6a3a 45%,
+      #f8ecc9 58%,
+      #caa063 70%,
+      #dcb87a 82%,
+      #f8ecc9 100%
+    );
+    background-size: 280% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+    animation: foilShine 7s ease-in-out infinite;
+  }
+
+  @keyframes foilShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .foil { animation: none; background-position: 35% 50%; }
+  }
+
+  footer {
+    border-top: 1px solid var(--hairline);
+    padding: 32px clamp(20px, 4vw, 48px);
+    text-align: center;
+    font-size: 12px;
+    color: var(--ivory-dim);
+    opacity: 0.7;
+  }
+
+  footer a { color: var(--ivory-dim); }
+</style>
+
+<nav class="nav">
+  <a class="nav-mark" href="/#hero">RICH HOT &amp; UNBOTHERED</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/#room">The Get Rich Room</a></li>
+      <li><a href="/#quickie">The Get Rich Quickie</a></li>
+      <li><a href="/#blueprint">Rich B*tch Blueprint</a></li>
+      <li><a href="/#abundance">21 Days to Abundance</a></li>
+      <li><a href="/#rapid-money">The Rapid Money Method</a></li>
+      <li class="nav-join-item"><a class="nav-join" href="/#list">Join the List</a></li>
+    </ul>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+(function () {
+  var nav = document.querySelector('.nav');
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelectorAll('.nav-links a, .nav-links .nav-join');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.forEach(function (a) {
+    a.addEventListener('click', function () {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
+
+<main>
+  <p class="crumbs"><a href="/shop.html">The Shop</a> &nbsp;/&nbsp; <span>Wired for Wealth</span></p>
+
+  <div class="product">
+    <figure class="product-image">
+      <img src="/assets/products/wired-for-wealth-mockup.jpg" width="1200" height="1200"
+           alt="Wired for Wealth shown on a tablet and phone, next to a woman in a gold satin dress holding champagne" />
+    </figure>
+
+    <section class="info">
+      <p class="kicker">Digital Program &middot; 3 Phases</p>
+      <span class="script-line">Wired for</span>
+      <h1 class="foil">Wealth</h1>
+
+      <div class="price">
+        <span class="price-now">$47</span>
+      </div>
+
+      <p class="lede">Recode your mind, body &amp; energy for wealth in less than 20 minutes a day.</p>
+      <p>
+        This is not another money mindset course. It&rsquo;s a complete neurological, energetic,
+        and emotional recalibration, built for the woman who keeps hitting the same ceiling no
+        matter how hard she works.
+      </p>
+
+            <a class="cta" href="#" data-checkout="wired-for-wealth">Get Instant Access &rarr;</a>
+      <p class="cta-note">Instant access &middot; Under 20 minutes a day</p>
+
+      <h2>What&rsquo;s inside</h2>
+      <ul class="phases">
+        <li>
+          <span class="phase-num">01</span>
+          <span class="phase-name">The Mind</span>
+          <span class="phase-desc">Repattern the beliefs blocking wealth at the root. Swap scarcity for certainty and fear for power.</span>
+        </li>
+        <li>
+          <span class="phase-num">02</span>
+          <span class="phase-name">The Body</span>
+          <span class="phase-desc">Calm the nervous system patterns that stop you from receiving and holding money, so wealth finally feels safe.</span>
+        </li>
+        <li>
+          <span class="phase-num">03</span>
+          <span class="phase-name">The Energy</span>
+          <span class="phase-desc">Activate your prosperity identity and open your receiving channels.</span>
+        </li>
+      </ul>
+
+      <h2>What changes</h2>
+      <ul class="outcomes">
+        <li>Bigger financial moves start to feel comfortable, not terrifying.</li>
+        <li>Making and receiving more money feels normal.</li>
+        <li>No more plateaus or money ups and downs.</li>
+        <li>Wealth stops being a goal and becomes your lifestyle.</li>
+      </ul>
+
+      <a class="back" href="/shop.html">&larr; Back to the Shop</a>
+    </section>
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 Hey U Human, LLC. All rights reserved. &middot;
+  <a href="/">Rich, Hot &amp; Unbothered</a> &middot;
+  <a href="/privacy-policy.html">Privacy Policy</a>
+</footer>
+<script src="/assets/cart.js?v=1" defer></script>
+</body>
+</html>
