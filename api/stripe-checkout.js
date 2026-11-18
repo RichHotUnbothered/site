@@ -64,9 +64,9 @@ module.exports = async function handler(req, res) {
       } else {
         params.discounts = { 0: { promotion_code: c.promoId } };
       }
-    } else {
-      params.allow_promotion_codes = 'true';
     }
+    // Codes are entered only in the site's cart, so Stripe's own
+    // "Add promotion code" box stays off.
 
     const session = await stripe('POST', '/checkout/sessions', params);
     res.status(200).json({ url: session.url });
