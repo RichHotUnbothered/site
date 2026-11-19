@@ -19,7 +19,7 @@ module.exports = async function handler(req, res) {
       customer_creation: 'always',
       billing_address_collection: 'auto',
       line_items: {},
-      // Make needs first + last name separately for delivery.
+      // ActiveCampaign gets first + last name separately.
       custom_fields: {
         0: { key: 'first_name', label: { type: 'custom', custom: 'First name' }, type: 'text', text: { maximum_length: 60 } },
         1: { key: 'last_name', label: { type: 'custom', custom: 'Last name' }, type: 'text', text: { maximum_length: 60 } },

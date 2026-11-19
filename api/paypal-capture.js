@@ -1,5 +1,5 @@
 // POST /api/paypal-capture  { orderID }  → { ok, status }
-// Captures (charges) an approved PayPal order, then sends it to Make for delivery.
+// Captures (charges) an approved PayPal order, then tags the buyer in ActiveCampaign for delivery.
 
 const { readBody, sendError } = require('./_lib/shop');
 const { paypal } = require('./_lib/paypal');
@@ -27,7 +27,7 @@ module.exports = async function handler(req, res) {
 
   if (data.status !== 'COMPLETED') return res.status(402).json({ ok: false, status: data.status });
 
-  // Paid. Hand it to Make. The customer is charged either way, so a delivery
+  // Paid. Tag the buyer in ActiveCampaign. The customer is charged either way, so a delivery
   // failure is logged loudly (Vercel → Logs) rather than shown as a payment error.
   try {
     const order = await paypal('GET', `/v2/checkout/orders/${orderID}`);

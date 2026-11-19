@@ -1,113 +1,132 @@
 {
   "currency": "usd",
+  "acStoreTag": 1339,
   "products": {
     "the-1-percent": {
       "name": "The 1%",
       "type": "Online Course",
       "price": 4700,
-      "image": "/assets/products/the-1-percent.jpg?v=2"
+      "image": "/assets/products/the-1-percent.jpg?v=2",
+      "acTag": 1340
     },
     "wired-for-wealth": {
       "name": "Wired for Wealth",
       "type": "Digital Program",
       "price": 4700,
-      "image": "/assets/products/wired-for-wealth-mockup.jpg"
+      "image": "/assets/products/wired-for-wealth-mockup.jpg",
+      "acTag": 1341
     },
     "stfu": {
       "name": "STFU",
       "type": "7-Day Course",
       "price": 59700,
-      "image": "/assets/products/stfu.jpg?v=1"
+      "image": "/assets/products/stfu.jpg?v=1",
+      "acTag": 1342
     },
     "more-money-please": {
       "name": "More Money Please",
       "type": "Money Course",
       "price": 4700,
-      "image": "/assets/products/more-money-please.jpg"
+      "image": "/assets/products/more-money-please.jpg",
+      "acTag": 1343
     },
     "expansion": {
       "name": "Expansion",
       "type": "Online Course",
       "price": 99700,
-      "image": "/assets/products/expansion.jpg?v=1"
+      "image": "/assets/products/expansion.jpg?v=1",
+      "acTag": 1344
     },
     "harness": {
       "name": "Harness",
       "type": "On-Demand Course",
       "price": 19700,
-      "image": "/assets/products/harness.jpg"
+      "image": "/assets/products/harness.jpg",
+      "acTag": 1345
     },
     "the-shift": {
       "name": "The Shift",
       "type": "Video Training",
       "price": 2700,
-      "image": "/assets/products/the-shift.jpg?v=1"
+      "image": "/assets/products/the-shift.jpg?v=1",
+      "acTag": 1346
     },
     "21-days-to-abundance": {
       "name": "21 Days to Abundance",
       "type": "21-Day Program",
       "price": 3700,
-      "image": "/assets/products/21-days-to-abundance.jpg"
+      "image": "/assets/products/21-days-to-abundance.jpg",
+      "acTag": 1347
     },
     "the-magic": {
       "name": "The Magic",
       "type": "3-Day Experience",
       "price": 4700,
-      "image": "/assets/products/the-magic.jpg?v=2"
+      "image": "/assets/products/the-magic.jpg?v=2",
+      "acTag": 1348
     },
     "the-foundation": {
       "name": "The Foundation",
       "type": "16-Module Course",
       "price": 99700,
-      "image": "/assets/products/the-foundation.jpg?v=1"
+      "image": "/assets/products/the-foundation.jpg?v=1",
+      "acTag": 1349
     },
     "financially-free": {
       "name": "Financially Free",
       "type": "5-Day Course",
       "price": 3700,
-      "image": "/assets/products/financially-free.jpg?v=1"
+      "image": "/assets/products/financially-free.jpg?v=1",
+      "acTag": 1350
     },
     "rich-btch-blueprint": {
       "name": "The Rich B*tch Blueprint",
       "type": "Personalized Report",
       "price": 2700,
-      "image": "/assets/products/rich-btch-blueprint.jpg"
+      "image": "/assets/products/rich-btch-blueprint.jpg",
+      "acTag": 1351
     },
     "witch": {
       "name": "W.I.T.C.H.",
       "type": "Online Course",
       "price": 39700,
-      "image": "/assets/products/witch.jpg?v=4"
+      "image": "/assets/products/witch.jpg?v=4",
+      "acTag": 1352
     },
     "rebirth": {
       "name": "Rebirth",
       "type": "Parenting Course",
       "price": 39700,
-      "image": "/assets/products/rebirth.jpg?v=1"
+      "image": "/assets/products/rebirth.jpg?v=1",
+      "acTag": 1353
     },
     "money-makeover": {
       "name": "The Money Makeover",
       "type": "Video Course",
       "price": 99700,
-      "image": "/assets/products/money-makeover.jpg?v=1"
+      "image": "/assets/products/money-makeover.jpg?v=1",
+      "acTag": 1354
     },
     "the-wealth-code": {
       "name": "The Wealth Code",
       "type": "Online Course",
       "price": 39700,
-      "image": "/assets/products/the-wealth-code.jpg?v=5"
+      "image": "/assets/products/the-wealth-code.jpg?v=5",
+      "acTag": 1355
     },
     "manifest": {
       "name": "Manifest",
       "type": "Online Course",
       "price": 39700,
-      "image": "/assets/products/manifest.jpg?v=3"
+      "image": "/assets/products/manifest.jpg?v=3",
+      "acTag": 1356
     },
     "unstoppable-you": {
       "name": "Unstoppable YOU",
       "type": "16-Week Program",
       "price": 99700,
-      "image": "/assets/products/unstoppable-you.jpg?v=1"
+      "image": "/assets/products/unstoppable-you.jpg?v=1",
+      "acTag": 1357
     }
   }
 }

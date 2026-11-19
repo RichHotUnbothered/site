@@ -1,41 +1,52 @@
-// Sends paid orders to Make (Custom webhook) for delivery.
-// One webhook call PER PRODUCT, so each Make run delivers exactly one course.
-// Env: MAKE_WEBHOOK_URL  (Make → Webhooks → Custom webhook → copy address)
+// Hands paid orders to ActiveCampaign for delivery.
+// Env (same ones the opt-in popup uses): AC_API_URL, AC_API_KEY
 //
-// Payload sent to Make:
-//   email, first_name, last_name, product_name, product_slug,
-//   order_id, payment_method ("stripe" | "paypal"), price, promo_code
-// Stripe can retry a webhook, so in Make dedupe on order_id + product_slug.
+// For every order:
+//   1. create/update the contact (email, first name, last name)
+//   2. add each purchased product's tag   (catalog.json → products[slug].acTag)
+//   3. add the store tag LAST, once        (catalog.json → acStoreTag, 1339)
+// The confirmation automation triggers on the store tag, so it runs once per
+// order and the product tags are already on the contact when it starts.
+// The automation removes the store tag at the end so a later purchase re-fires it.
 
 const { catalog } = require('./shop');
 
-async function deliver(order) {
-  const url = process.env.MAKE_WEBHOOK_URL;
-  if (!url) throw new Error('MAKE_WEBHOOK_URL not set');
+async function ac(path, body) {
+  const { AC_API_URL, AC_API_KEY } = process.env;
+  if (!AC_API_URL || !AC_API_KEY) throw new Error('AC_API_URL / AC_API_KEY not set');
+  const res = await fetch(`${AC_API_URL.replace(/\/$/, '')}/api/3/${path}`, {
+    method: 'POST',
+    headers: { 'Api-Token': AC_API_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json().catch(() => ({}));
+  return { ok: res.ok, status: res.status, data };
+}
 
+async function addTag(contactId, tagId) {
+  const r = await ac('contactTags', { contactTag: { contact: String(contactId), tag: String(tagId) } });
+  if (!r.ok) throw new Error(`AC tag ${tagId} failed: ${r.status} ${JSON.stringify(r.data)}`);
+}
+
+async function deliver(order) {
   const slugs = [...new Set(order.slugs)].filter((s) => catalog.products[s]);
   if (!slugs.length) throw new Error(`No known products in order ${order.orderId}`);
+  if (!order.email) throw new Error(`No email on order ${order.orderId}`);
 
-  for (const slug of slugs) {
-    const p = catalog.products[slug];
-    const payload = {
-      email: order.email || '',
-      first_name: order.firstName || '',
-      last_name: order.lastName || '',
-      product_name: p.name,
-      product_slug: slug,
-      order_id: order.orderId,
-      payment_method: order.method,
-      price: (p.price / 100).toFixed(2),
-      promo_code: order.code || '',
-    };
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error(`Make webhook ${res.status} for ${slug} (${order.orderId})`);
-  }
+  const contact = await ac('contact/sync', {
+    contact: {
+      email: order.email,
+      firstName: order.firstName || undefined,
+      lastName: order.lastName || undefined,
+    },
+  });
+  const contactId = contact.ok && contact.data.contact && contact.data.contact.id;
+  if (!contactId) throw new Error(`AC contact/sync failed: ${contact.status} ${JSON.stringify(contact.data)}`);
+
+  for (const slug of slugs) await addTag(contactId, catalog.products[slug].acTag);
+  await addTag(contactId, catalog.acStoreTag);
+
+  console.log(`delivered ${order.method} ${order.orderId} → AC contact ${contactId}: ${slugs.join(', ')}`);
   return slugs.length;
 }
 
