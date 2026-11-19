@@ -16,7 +16,8 @@ async function ac(path, body) {
   if (!AC_API_URL || !AC_API_KEY) throw new Error('AC_API_URL / AC_API_KEY not set');
   const res = await fetch(`${AC_API_URL.replace(/\/$/, '')}/api/3/${path}`, {
     method: 'POST',
-    headers: { 'Api-Token': AC_API_KEY, 'Content-Type': 'application/json' },
+    // AC's firewall rejects some default client user agents with a 403.
+    headers: { 'Api-Token': AC_API_KEY, 'Content-Type': 'application/json', Accept: 'application/json', 'User-Agent': 'Mozilla/5.0 (compatible; RHU-Shop/1.0)' },
     body: JSON.stringify(body),
   });
   const data = await res.json().catch(() => ({}));
