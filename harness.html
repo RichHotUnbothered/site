@@ -194,7 +194,7 @@
   .nav.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
   .nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-  @media (max-width: 720px) {
+  @media (max-width: 1300px) {
     .nav-mark {
       font-size: 12px;
       letter-spacing: 0.12em;
@@ -509,12 +509,20 @@
     color: #2a1a0c; background: linear-gradient(135deg, #f8ecc9, #caa063 50%, #a98c5c); padding: 4px 10px; border-radius: 999px;
     margin-left: 8px; vertical-align: 2px;
   }
+
+  .nav-links a.nav-shop { color: var(--gold); }
+  @media (min-width: 1301px) and (max-width: 1500px) {
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 11.5px; letter-spacing: 0.04em; }
+  }
+  .nav-links a.nav-shop:hover { color: var(--ivory); }
 </style>
 
 <nav class="nav">
   <a class="nav-mark" href="/#hero">RICH HOT &amp; UNBOTHERED</a>
   <div class="nav-right">
     <ul class="nav-links">
+      <li><a class="nav-shop" href="/shop">Shop</a></li>
       <li><a href="/#room">The Get Rich Room</a></li>
       <li><a href="/#quickie">The Get Rich Quickie</a></li>
       <li><a href="/#blueprint">Rich B*tch Blueprint</a></li>
