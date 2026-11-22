@@ -58,7 +58,9 @@ function formEncode(obj, prefix, out = []) {
 }
 
 async function stripe(method, path, params) {
-  const key = (process.env.STRIPE_SECRET_KEY || '').trim(); // pasted keys can carry stray tabs/newlines
+  // Pasted keys can carry stray tabs/newlines or be pasted twice: use the first token.
+  const key = (process.env.STRIPE_SECRET_KEY || '').trim().split(/\s+/)[0];
+  if (key.includes('...')) throw Object.assign(new Error('STRIPE_SECRET_KEY is the masked preview, not the full key'), { config: true });
   if (!key) throw Object.assign(new Error('STRIPE_SECRET_KEY not set'), { config: true });
   const url = `${STRIPE_API}${path}${method === 'GET' && params ? `?${formEncode(params)}` : ''}`;
   const res = await fetch(url, {
