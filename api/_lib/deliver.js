@@ -12,7 +12,8 @@
 const { catalog } = require('./shop');
 
 async function ac(path, body) {
-  const { AC_API_URL, AC_API_KEY } = process.env;
+  const AC_API_URL = (process.env.AC_API_URL || '').trim();
+  const AC_API_KEY = (process.env.AC_API_KEY || '').trim();
   if (!AC_API_URL || !AC_API_KEY) throw new Error('AC_API_URL / AC_API_KEY not set');
   const res = await fetch(`${AC_API_URL.replace(/\/$/, '')}/api/3/${path}`, {
     method: 'POST',

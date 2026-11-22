@@ -2,13 +2,14 @@
 // Env: PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL_ENV = "sandbox" | "live"
 
 function base() {
-  return process.env.PAYPAL_ENV === 'live'
+  return (process.env.PAYPAL_ENV || '').trim().toLowerCase() === 'live'
     ? 'https://api-m.paypal.com'
     : 'https://api-m.sandbox.paypal.com';
 }
 
 async function token() {
-  const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
+  const PAYPAL_CLIENT_ID = (process.env.PAYPAL_CLIENT_ID || '').trim();
+  const PAYPAL_CLIENT_SECRET = (process.env.PAYPAL_CLIENT_SECRET || '').trim();
   if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
     throw Object.assign(new Error('PayPal env vars not set'), { config: true });
   }

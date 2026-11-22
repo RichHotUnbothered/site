@@ -23,7 +23,7 @@ function readBody(req) {
 }
 
 function siteOrigin(req) {
-  if (process.env.SITE_URL) return process.env.SITE_URL.replace(/\/$/, '');
+  if (process.env.SITE_URL) return process.env.SITE_URL.trim().replace(/\/$/, '');
   const proto = req.headers['x-forwarded-proto'] || 'https';
   return `${proto}://${req.headers['x-forwarded-host'] || req.headers.host}`;
 }
@@ -58,7 +58,7 @@ function formEncode(obj, prefix, out = []) {
 }
 
 async function stripe(method, path, params) {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = (process.env.STRIPE_SECRET_KEY || '').trim(); // pasted keys can carry stray tabs/newlines
   if (!key) throw Object.assign(new Error('STRIPE_SECRET_KEY not set'), { config: true });
   const url = `${STRIPE_API}${path}${method === 'GET' && params ? `?${formEncode(params)}` : ''}`;
   const res = await fetch(url, {
