@@ -1,7 +1,28 @@
 {
   "rewrites": [
-    { "source": "/confirmed", "destination": "/confirmed.html" },
-    { "source": "/shop", "destination": "/shop.html" },
-    { "source": "/order-complete", "destination": "/order-complete.html" }
+    {
+      "source": "/confirmed",
+      "destination": "/confirmed.html"
+    },
+    {
+      "source": "/shop",
+      "destination": "/shop.html"
+    },
+    {
+      "source": "/order-complete",
+      "destination": "/order-complete.html"
+    },
+    {
+      "source": "/clearing",
+      "destination": "/clearing.html"
+    },
+    {
+      "source": "/clearing/thanks",
+      "destination": "/clearing-thanks.html"
+    },
+    {
+      "source": "/clearing/live",
+      "destination": "/clearing-live.html"
+    }
   ]
 }

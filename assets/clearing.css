@@ -1,0 +1,129 @@
+/* Live Energy Clearing — shared styles for /clearing, /clearing/thanks, /clearing/live */
+
+:root {
+  --ink: #0d0807;
+  --surface: #1a1210;
+  --ivory: #f1eae0;
+  --ivory-dim: #cabfb0;
+  --gold: #dcb87a;
+  --gold-dim: #a98c5c;
+  --red: #b70404;
+  --hair: rgba(220, 184, 122, 0.22);
+  --serif: 'Bodoni Moda', 'Times New Roman', serif;
+  --script: 'Kingsley Roman', 'Bodoni Moda', cursive;
+  --ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--ui);
+  color: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(60% 45% at 78% 18%, rgba(220, 184, 122, 0.14), transparent 70%),
+    radial-gradient(50% 40% at 10% 85%, rgba(183, 4, 4, 0.12), transparent 70%),
+    var(--ink);
+  background-attachment: fixed;
+}
+a { color: var(--gold); }
+img { max-width: 100%; height: auto; display: block; }
+
+/* header / footer */
+.ev-head {
+  display: flex; justify-content: center; align-items: center;
+  height: 64px; border-bottom: 1px solid var(--hair);
+}
+.ev-mark {
+  font: 700 13px var(--serif); letter-spacing: 0.22em; color: var(--gold); text-decoration: none;
+}
+.ev-foot {
+  margin-top: auto; padding: 28px 20px; text-align: center;
+  font-size: 12px; color: var(--gold-dim); border-top: 1px solid var(--hair);
+}
+.ev-foot a { color: var(--gold-dim); }
+
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+.narrow { max-width: 720px; }
+
+/* type */
+.kicker {
+  font-size: 12px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+  margin: 0 0 14px;
+}
+.script { font: 700 clamp(30px, 4.4vw, 44px)/1.1 var(--script); color: var(--gold); margin: 0; }
+h1.title {
+  font: 700 clamp(46px, 7.4vw, 84px)/1.02 var(--serif); letter-spacing: -0.01em; margin: 6px 0 14px;
+  padding-bottom: 0.14em; /* room for g/y descenders: gradient text is clipped to the box */
+  background: linear-gradient(115deg, #caa063 0%, #f8ecc9 30%, #dcb87a 52%, #f8ecc9 74%, #caa063 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+}
+.lede { font: italic clamp(20px, 2.4vw, 25px)/1.42 var(--serif); color: var(--ivory); margin: 0 0 26px; }
+h2.sec {
+  font: 700 clamp(26px, 3.4vw, 36px)/1.15 var(--serif); color: var(--ivory); margin: 0 0 20px;
+}
+h2.sec em { color: var(--gold); font-style: italic; }
+p { line-height: 1.7; font-size: 16.5px; color: var(--ivory-dim); margin: 0 0 16px; }
+p strong { color: var(--ivory); }
+
+/* countdown */
+.countdown { display: flex; gap: 10px; margin: 0 0 8px; }
+.countdown .u {
+  min-width: 74px; padding: 12px 8px 10px; text-align: center;
+  border: 1px solid var(--hair); border-radius: 14px; background: rgba(26, 18, 16, 0.75);
+}
+.countdown b { display: block; font: 700 32px/1 var(--serif); color: var(--ivory); font-variant-numeric: tabular-nums; }
+.countdown small { display: block; margin-top: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); }
+.countdown.is-done { display: none; }
+.when { font-size: 14.5px; color: var(--ivory); margin: 10px 0 0; }
+.when .local { display: block; color: var(--gold-dim); font-size: 13px; margin-top: 2px; }
+.when .local:empty { display: none; }
+
+/* forms */
+.card {
+  border: 1px solid var(--hair); border-radius: 22px; padding: clamp(22px, 3vw, 30px);
+  background: rgba(26, 18, 16, 0.82); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+.card h3 { font: 700 24px var(--serif); margin: 0 0 4px; color: var(--ivory); }
+.card .sub { font-size: 14px; color: var(--ivory-dim); margin: 0 0 18px; }
+.field { margin-bottom: 12px; }
+.field label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-dim); margin: 0 0 6px; }
+.field input {
+  width: 100%; height: 50px; padding: 0 16px; border-radius: 12px;
+  border: 1px solid var(--hair); background: rgba(13, 8, 7, 0.85); color: var(--ivory);
+  font: 500 16px var(--ui);
+}
+.field input:focus { outline: none; border-color: var(--gold); }
+.btn {
+  display: block; width: 100%; height: 56px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--red); color: var(--ivory); text-align: center; text-decoration: none; line-height: 56px;
+  font: 700 13.5px/56px var(--ui); letter-spacing: 0.12em; text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn:hover { background: #950303; transform: translateY(-1px); }
+.btn[disabled] { opacity: 0.6; cursor: wait; transform: none; }
+.btn.ghost { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+.btn.ghost:hover { background: rgba(220, 184, 122, 0.1); }
+.fine { font-size: 12.5px; color: var(--gold-dim); text-align: center; margin: 12px 0 0; line-height: 1.5; }
+.form-msg { color: #f0a59d; font-size: 13.5px; margin: 10px 0 0; text-align: center; }
+.form-msg:empty { display: none; }
+
+/* lists */
+.ticks { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 12px; }
+.ticks li {
+  position: relative; padding: 14px 16px 14px 46px; border: 1px solid var(--hair); border-radius: 14px;
+  background: rgba(26, 18, 16, 0.6); color: var(--ivory); line-height: 1.5; font-size: 16px;
+}
+.ticks li::before {
+  content: ""; position: absolute; left: 16px; top: 18px; width: 14px; height: 14px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff6dc, #dcb87a 50%, #8a6a3a 100%);
+  box-shadow: 0 0 12px 3px rgba(220, 184, 122, 0.45);
+}
+
+section.block { padding: clamp(48px, 7vw, 84px) 0; border-top: 1px solid var(--hair); }
+
+/* cart button is not needed on these pages (the upsell button opens the cart) */
+.rhu-cart-btn.floating { display: none; }

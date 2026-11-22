@@ -68,6 +68,10 @@ module.exports = async function handler(req, res) {
     // Codes are entered only in the site's cart, so Stripe's own
     // "Add promotion code" box stays off.
 
+    // Prefill the email we already know (e.g. from an event sign-up). Stripe still lets them change it.
+    const email = String(body.email || '').trim();
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) && email.length <= 200) params.customer_email = email;
+
     const session = await stripe('POST', '/checkout/sessions', params);
     res.status(200).json({ url: session.url });
   } catch (err) {

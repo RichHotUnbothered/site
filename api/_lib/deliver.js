@@ -58,4 +58,4 @@ function splitName(full) {
   return { first: parts.shift() || '', last: parts.join(' ') };
 }
 
-module.exports = { deliver, splitName };
+module.exports = { deliver, splitName, ac, addTag };

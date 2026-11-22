@@ -301,7 +301,9 @@
     els.checkout.disabled = true;
     els.checkout.textContent = 'One moment…';
     try { if (window.fbq) fbq('track', 'InitiateCheckout', { value: subtotal() / 100, currency: 'USD', num_items: validItems().length }); } catch (e) {}
-    post('/api/stripe-checkout', { items: validItems(), code: state.code || undefined }).then(function (d) {
+    var email;
+    try { email = (JSON.parse(localStorage.getItem('rhu_contact') || '{}').email) || undefined; } catch (e) {}
+    post('/api/stripe-checkout', { items: validItems(), code: state.code || undefined, email: email }).then(function (d) {
       if (d.url) { window.location.href = d.url; return; }
       throw d;
     }).catch(function (e) {

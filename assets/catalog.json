@@ -127,6 +127,14 @@
       "price": 99700,
       "image": "/assets/products/unstoppable-you.jpg?v=1",
       "acTag": 1357
+    },
+    "live-energy-clearing-homecoming": {
+      "name": "Live Energy Clearing + Homecoming",
+      "type": "Lifetime Access",
+      "price": 2700,
+      "image": "/assets/products/live-energy-clearing-homecoming.jpg?v=1",
+      "acTag": 1360,
+      "hidden": true
     }
   }
 }
