@@ -13,6 +13,9 @@ var EVENT = {
   // (keep the code after /embed/ for private events). A plain https://vimeo.com/event/1234567 also works.
   vimeo: '',
   vimeoChat: true,        // show Vimeo's live chat beside the video (below it on phones)
+  // Vimeo → event → Live settings → Embed → "Chat embed code". Paste the code or its src here;
+  // if left empty the chat link is built from the video link.
+  vimeoChatEmbed: '',
   livePath: '/clearing/live',
 };
 /* ↑ EDIT HERE */
@@ -201,6 +204,10 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
       // With our own chat panel, use the plain video player (drop /interaction) so chat isn't doubled up.
       if (EVENT.vimeoChat) src = src.replace(/\/interaction\/?(\?|$)/, '$1');
       var chatSrc = 'https://vimeo.com/event/' + id + '/chat/' + hash;
+      var chatGiven = String(EVENT.vimeoChatEmbed || '').trim();
+      var chatTag = chatGiven.match(/src=["']([^"']+)["']/);
+      if (chatTag) chatGiven = chatTag[1];
+      if (/^https:\/\/([a-z]+\.)?vimeo\.com\//.test(chatGiven)) chatSrc = chatGiven.replace(/&amp;/g, '&');
       var box = document.querySelector('[data-player]');
       if (src && box) {
         var frame = document.createElement('iframe');
