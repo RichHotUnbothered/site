@@ -200,7 +200,7 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
         frame.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture; encrypted-media; web-share');
         frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
         frame.setAttribute('allowfullscreen', '');
-        box.innerHTML = '<div class="player-frame"></div>' +
+        box.innerHTML = '<div class="player-frame' + (/\/interaction/.test(src) ? ' interactive' : '') + '"></div>' +
           (EVENT.vimeoChat ? '<div class="chat-frame"><iframe src="https://vimeo.com/event/' + id + '/chat/" title="Live chat"></iframe></div>' : '');
         box.querySelector('.player-frame').appendChild(frame);
         box.classList.toggle('with-chat', !!EVENT.vimeoChat);
