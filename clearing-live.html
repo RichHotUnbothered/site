@@ -62,14 +62,14 @@
   [data-registered="yes"] [data-gate] { display: none !important; }
   [data-registered="no"] [data-members] { display: none !important; }
 
-  .stage { max-width: 1040px; margin: 26px auto 0; }
+  .stage { max-width: 1240px; margin: 26px auto 0; }
   .player { display: grid; gap: 14px; }
   .player.with-chat { grid-template-columns: 1fr 340px; }
   .player-frame { position: relative; padding-top: 56.25%; border-radius: 18px; overflow: hidden; border: 1px solid var(--hair); background: #000; box-shadow: 0 30px 70px rgba(0,0,0,.55); }
   .player-frame iframe, .chat-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   /* Vimeo interactive embed (video + chat/Q&A): on phones the chat stacks under the video, so give it room */
   @media (max-width: 720px) { .player-frame.interactive { padding-top: 165%; } }
-  .chat-frame { position: relative; min-height: 420px; border-radius: 18px; overflow: hidden; border: 1px solid var(--hair); background: #111; }
+  .chat-frame { position: relative; min-height: 480px; border-radius: 18px; overflow: hidden; border: 1px solid var(--hair); background: #111; }
   .player-wait { padding: 64px 20px; border: 1px dashed var(--hair); border-radius: 18px; color: var(--ivory-dim); }
   .player-wait b { display: block; font: 700 24px var(--serif); color: var(--ivory); margin-bottom: 6px; }
   [data-state="live"] .tips[data-show] { display: flex; }
@@ -184,7 +184,7 @@
 </main>
 
 <footer class="ev-foot">&copy; 2026 Hey U Human, LLC. All rights reserved. &middot; <a href="/privacy-policy.html">Privacy Policy</a> &middot; <a href="/terms.html">Terms</a></footer>
-<script src="/assets/clearing.js?v=4"></script>
+<script src="/assets/clearing.js?v=5"></script>
 <script src="/assets/cart.js?v=2" defer></script>
 </body>
 </html>

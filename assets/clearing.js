@@ -12,7 +12,7 @@ var EVENT = {
   // Paste Vimeo's embed code or its src link, e.g. https://vimeo.com/event/1234567/embed/abc123/interaction
   // (keep the code after /embed/ for private events). A plain https://vimeo.com/event/1234567 also works.
   vimeo: '',
-  vimeoChat: false,       // true = show Vimeo's live chat next to the video
+  vimeoChat: true,        // show Vimeo's live chat beside the video (below it on phones)
   livePath: '/clearing/live',
 };
 /* ↑ EDIT HERE */
@@ -162,6 +162,11 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
   }
   // Player URL: use Vimeo's own embed src when given (keeps the private hash and /interaction),
   // otherwise build it from the event number.
+  // Private-event hash from an embed link like .../event/123/embed/abc123/interaction
+  function vimeoHash(src) {
+    var m = String(src || '').match(/\/event\/\d+\/embed\/([0-9a-f]{6,})/i);
+    return m ? m[1] : '';
+  }
   function vimeoSrc() {
     var v = String(EVENT.vimeo || '').trim();
     var fromTag = v.match(/src=["']([^"']+)["']/);
@@ -192,6 +197,10 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
     if (watching && !playerLoaded) {
       var id = vimeoId();
       var src = vimeoSrc();
+      var hash = vimeoHash(src);
+      // With our own chat panel, use the plain video player (drop /interaction) so chat isn't doubled up.
+      if (EVENT.vimeoChat) src = src.replace(/\/interaction\/?(\?|$)/, '$1');
+      var chatSrc = 'https://vimeo.com/event/' + id + '/chat/' + hash;
       var box = document.querySelector('[data-player]');
       if (src && box) {
         var frame = document.createElement('iframe');
@@ -201,7 +210,7 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
         frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
         frame.setAttribute('allowfullscreen', '');
         box.innerHTML = '<div class="player-frame' + (/\/interaction/.test(src) ? ' interactive' : '') + '"></div>' +
-          (EVENT.vimeoChat ? '<div class="chat-frame"><iframe src="https://vimeo.com/event/' + id + '/chat/" title="Live chat"></iframe></div>' : '');
+          (EVENT.vimeoChat ? '<div class="chat-frame"><iframe src="' + chatSrc + '" title="Live chat" allow="clipboard-write"></iframe></div>' : '');
         box.querySelector('.player-frame').appendChild(frame);
         box.classList.toggle('with-chat', !!EVENT.vimeoChat);
         playerLoaded = true;
