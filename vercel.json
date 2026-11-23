@@ -23,6 +23,10 @@
     {
       "source": "/clearing/live",
       "destination": "/clearing-live.html"
+    },
+    {
+      "source": "/clearing/test",
+      "destination": "/clearing-test.html"
     }
   ]
 }

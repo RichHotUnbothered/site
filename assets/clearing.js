@@ -16,6 +16,11 @@ var EVENT = {
 };
 /* ↑ EDIT HERE */
 
+// A page can override settings before loading this script, e.g. the team test page:
+//   window.EVENT_OVERRIDE = { id: 'live-energy-clearing-test', vimeo: '...', forceState: 'live', testMode: true };
+//   testMode: the email gate works but nothing is sent to ActiveCampaign.
+if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
+
 (function () {
   'use strict';
 
@@ -43,6 +48,7 @@ var EVENT = {
   }
 
   function register(email, firstName, source) {
+    if (EVENT.testMode) return Promise.resolve({ ok: true, test: true });
     return fetch('/api/event-register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -154,7 +160,7 @@ var EVENT = {
     return m ? m[1] : '';
   }
   function liveState() {
-    var forced = new URLSearchParams(location.search).get('preview_state');
+    var forced = new URLSearchParams(location.search).get('preview_state') || EVENT.forceState;
     if (forced) return forced;
     var now = Date.now();
     if (now < start - EVENT.openEarlyMin * 6e4) return 'before';
