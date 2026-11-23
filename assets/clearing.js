@@ -220,6 +220,20 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
           (EVENT.vimeoChat ? '<div class="chat-frame"><iframe src="' + chatSrc + '" title="Live chat" allow="clipboard-write"></iframe></div>' : '');
         box.querySelector('.player-frame').appendChild(frame);
         box.classList.toggle('with-chat', !!EVENT.vimeoChat);
+        if (EVENT.vimeoChat) {
+          // Backup: some browsers (e.g. Safari) block embedded chat sign-in, so offer it in its own window.
+          var help = document.createElement('p');
+          help.className = 'chat-help';
+          help.innerHTML = 'Chat not working? <a href="#" data-chat-pop>Open the chat in a new window &rarr;</a>';
+          box.parentNode.insertBefore(help, box.nextSibling);
+          help.querySelector('[data-chat-pop]').addEventListener('click', function (e) {
+            e.preventDefault();
+            var direct = chatSrc.replace(/[?&]theme=[^&]*/, '');
+            var wide = window.innerWidth > 900;
+            var w = wide && window.open(direct, 'rhu_chat', 'popup,width=420,height=760,left=' + Math.max(0, (window.screenX || 0) + window.outerWidth - 440) + ',top=' + ((window.screenY || 0) + 60));
+            if (!w) window.open(direct, '_blank', 'noopener');
+          });
+        }
         playerLoaded = true;
       }
     }
