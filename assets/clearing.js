@@ -9,7 +9,8 @@ var EVENT = {
   durationMin: 120,       // how long the live page shows "LIVE" before switching to "replay"
   openEarlyMin: 15,       // player appears this many minutes before start
   replayHours: 48,        // replay available this long after start
-  // Paste the Vimeo live event link (e.g. https://vimeo.com/event/1234567) or just its number:
+  // Paste Vimeo's embed code or its src link, e.g. https://vimeo.com/event/1234567/embed/abc123/interaction
+  // (keep the code after /embed/ for private events). A plain https://vimeo.com/event/1234567 also works.
   vimeo: '',
   vimeoChat: false,       // true = show Vimeo's live chat next to the video
   livePath: '/clearing/live',
@@ -159,6 +160,17 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
     var m = String(EVENT.vimeo || '').match(/(\d{5,})/);
     return m ? m[1] : '';
   }
+  // Player URL: use Vimeo's own embed src when given (keeps the private hash and /interaction),
+  // otherwise build it from the event number.
+  function vimeoSrc() {
+    var v = String(EVENT.vimeo || '').trim();
+    var fromTag = v.match(/src=["']([^"']+)["']/);
+    if (fromTag) v = fromTag[1];
+    v = v.replace(/&amp;/g, '&');
+    if (/^https:\/\/(player\.)?vimeo\.com\/.+\/embed/.test(v) || /^https:\/\/player\.vimeo\.com\//.test(v)) return v;
+    var id = vimeoId();
+    return id ? 'https://vimeo.com/event/' + id + '/embed' : '';
+  }
   function liveState() {
     var forced = new URLSearchParams(location.search).get('preview_state') || EVENT.forceState;
     if (forced) return forced;
@@ -179,11 +191,18 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
     var watching = (state === 'live' || state === 'replay') && reg;
     if (watching && !playerLoaded) {
       var id = vimeoId();
+      var src = vimeoSrc();
       var box = document.querySelector('[data-player]');
-      if (id && box) {
-        box.innerHTML = '<div class="player-frame"><iframe src="https://vimeo.com/event/' + id +
-          '/embed" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen title="' + EVENT.name + '"></iframe></div>' +
+      if (src && box) {
+        var frame = document.createElement('iframe');
+        frame.src = src;
+        frame.title = EVENT.name;
+        frame.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture; encrypted-media; web-share');
+        frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        frame.setAttribute('allowfullscreen', '');
+        box.innerHTML = '<div class="player-frame"></div>' +
           (EVENT.vimeoChat ? '<div class="chat-frame"><iframe src="https://vimeo.com/event/' + id + '/chat/" title="Live chat"></iframe></div>' : '');
+        box.querySelector('.player-frame').appendChild(frame);
         box.classList.toggle('with-chat', !!EVENT.vimeoChat);
         playerLoaded = true;
       }
