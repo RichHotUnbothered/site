@@ -11,11 +11,11 @@ var EVENT = {
   replayHours: 48,        // replay available this long after start
   // Paste Vimeo's embed code or its src link, e.g. https://vimeo.com/event/1234567/embed/abc123/interaction
   // (keep the code after /embed/ for private events). A plain https://vimeo.com/event/1234567 also works.
-  vimeo: '',
+  vimeo: 'https://vimeo.com/event/6379687/embed/60540cbaa0/interaction',
   vimeoChat: true,        // show Vimeo's live chat beside the video (below it on phones)
   // Vimeo → event → Live settings → Embed → "Chat embed code". Paste the code or its src here;
   // if left empty the chat link is built from the video link.
-  vimeoChatEmbed: '',
+  vimeoChatEmbed: 'https://vimeo.com/live/interaction_tools/live_event/6379687?auth_room_unlisted_hash=60540cbaa0&theme=light',
   livePath: '/clearing/live',
 };
 /* ↑ EDIT HERE */
