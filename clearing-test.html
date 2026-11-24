@@ -72,6 +72,9 @@
   .chat-help { margin: 12px 0 0; font-size: 14px; color: var(--ivory-dim); }
   .chat-help a { color: var(--gold); font-weight: 600; }
   .chat-frame { position: relative; min-height: 480px; border-radius: 18px; overflow: hidden; border: 1px solid var(--hair); background: #111; }
+  .chat-col { display: flex; flex-direction: column; gap: 8px; }
+  .chat-col .chat-frame { flex: 1; }
+  .chat-hi { margin: 0; font-size: 14.5px; font-weight: 600; color: var(--gold); text-align: left; }
   .player-wait { padding: 64px 20px; border: 1px dashed var(--hair); border-radius: 18px; color: var(--ivory-dim); }
   .player-wait b { display: block; font: 700 24px var(--serif); color: var(--ivory); margin-bottom: 6px; }
   [data-state="live"] .tips[data-show] { display: flex; }
@@ -198,7 +201,7 @@
     testMode: true,
   };
 </script>
-<script src="/assets/clearing.js?v=8"></script>
+<script src="/assets/clearing.js?v=9"></script>
 <script src="/assets/cart.js?v=2" defer></script>
 </body>
 </html>

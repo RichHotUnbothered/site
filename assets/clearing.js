@@ -16,6 +16,9 @@ var EVENT = {
   // Vimeo → event → Live settings → Embed → "Chat embed code". Paste the code or its src here;
   // if left empty the chat link is built from the video link.
   vimeoChatEmbed: 'https://vimeo.com/live/interaction_tools/live_event/6379687?auth_room_unlisted_hash=60540cbaa0&theme=light',
+  // Replay: after the event, paste the recording's embed code or link here (e.g. https://vimeo.com/123456789/abc123).
+  // Leave empty to keep showing the live event's own recording.
+  replayVimeo: '',
   livePath: '/clearing/live',
 };
 /* ↑ EDIT HERE */
@@ -170,6 +173,19 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
     var m = String(src || '').match(/\/event\/\d+\/embed\/([0-9a-f]{6,})/i);
     return m ? m[1] : '';
   }
+  // Replay recording: embed code, player link, or a plain vimeo.com/123456789/abc123 link.
+  function replaySrc() {
+    var v = String(EVENT.replayVimeo || '').trim();
+    var fromTag = v.match(/src=["']([^"']+)["']/);
+    if (fromTag) v = fromTag[1];
+    v = v.replace(/&amp;/g, '&');
+    if (!v) return '';
+    if (/^https:\/\/player\.vimeo\.com\//.test(v) || /\/embed/.test(v)) return v;
+    var m = v.match(/vimeo\.com\/(?:video\/)?(\d{5,})(?:\/([0-9a-f]{6,}))?/i);
+    if (!m) return '';
+    var h = m[2] || (v.match(/[?&]h=([0-9a-f]+)/i) || [])[1];
+    return 'https://player.vimeo.com/video/' + m[1] + (h ? '?h=' + h : '');
+  }
   function vimeoSrc() {
     var v = String(EVENT.vimeo || '').trim();
     var fromTag = v.match(/src=["']([^"']+)["']/);
@@ -203,6 +219,10 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
       var hash = vimeoHash(src);
       // With our own chat panel, use the plain video player (drop /interaction) so chat isn't doubled up.
       if (EVENT.vimeoChat) src = src.replace(/\/interaction\/?(\?|$)/, '$1');
+      // After the event: use the separate replay recording if one is set (no chat — it's closed by then).
+      var replay = state === 'replay' && replaySrc();
+      var withChat = EVENT.vimeoChat && !replay;
+      if (replay) src = replay;
       var chatSrc = 'https://vimeo.com/event/' + id + '/chat/' + hash;
       var chatGiven = String(EVENT.vimeoChatEmbed || '').trim();
       var chatTag = chatGiven.match(/src=["']([^"']+)["']/);
@@ -217,10 +237,11 @@ if (window.EVENT_OVERRIDE) Object.assign(EVENT, window.EVENT_OVERRIDE);
         frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
         frame.setAttribute('allowfullscreen', '');
         box.innerHTML = '<div class="player-frame' + (/\/interaction/.test(src) ? ' interactive' : '') + '"></div>' +
-          (EVENT.vimeoChat ? '<div class="chat-frame"><iframe src="' + chatSrc + '" title="Live chat" allow="clipboard-write"></iframe></div>' : '');
+          (withChat ? '<div class="chat-col">' + (state === 'live' ? '<p class="chat-hi">Say hi in the chat! Type your first name, then tap Join.</p>' : '') +
+            '<div class="chat-frame"><iframe src="' + chatSrc + '" title="Live chat" allow="clipboard-write"></iframe></div></div>' : '');
         box.querySelector('.player-frame').appendChild(frame);
-        box.classList.toggle('with-chat', !!EVENT.vimeoChat);
-        if (EVENT.vimeoChat) {
+        box.classList.toggle('with-chat', !!withChat);
+        if (withChat) {
           // Backup: some browsers (e.g. Safari) block embedded chat sign-in, so offer it in its own window.
           var help = document.createElement('p');
           help.className = 'chat-help';
