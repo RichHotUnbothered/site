@@ -18,7 +18,7 @@ var EVENT = {
   vimeoChatEmbed: 'https://vimeo.com/live/interaction_tools/live_event/6379687?auth_room_unlisted_hash=60540cbaa0&theme=light',
   // Replay: after the event, paste the recording's embed code or link here (e.g. https://vimeo.com/123456789/abc123).
   // Leave empty to keep showing the live event's own recording.
-  replayVimeo: '',
+  replayVimeo: 'https://player.vimeo.com/video/1249818689?h=4a93e3c9d3&title=0&byline=0&portrait=0&autopause=0',
   livePath: '/clearing/live',
 };
 /* ↑ EDIT HERE */
