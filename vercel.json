@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/clearing",
+      "destination": "/clearing/live",
+      "permanent": false
+    },
+    {
+      "source": "/clearing.html",
+      "destination": "/clearing/live",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/confirmed",
